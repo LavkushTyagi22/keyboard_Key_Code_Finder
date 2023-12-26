@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      height: 100vh;
+      margin: 0;
+      background: linear-gradient(135deg, #3498db, #9b59b6); /* Gradient background */
+    }
+
+    #keyContainer {
+      text-align: center;
+      background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent content background */
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+      transition: background-color 0.5s ease; /* Smooth color transition */
+      margin-bottom: 20px;
+    }
+
+    #keyInfo {
+      font-size: 18px;
+      margin-bottom: 10px;
+      color: #2c3e50; /* Text color */
+    }
+
+    /* Animation effect on hover */
+    #keyContainer:hover,
+    #keyInfo:hover {
+      transform: scale(1.02);
+      transition: transform 0.3s ease; /* Smooth scaling transition */
+    }
+
+    footer {
+      text-align: center;
+      color: #ffffff; /* Footer text color */
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      padding: 10px 0;
+      background: linear-gradient(135deg, #3498db, #9b59b6); /* Gradient footer background */
+    }
+
+    footer a {
+      color: #ffffff;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .copyright {
+      font-size: 12px;
+      margin-top: 5px;
+    }
+  </style>
+  <title>Key Info Display</title>
+</head>
+<body>
+  <div id="keyContainer">
+    <div id="keyInfo">Press a key to see key information</div>
+  </div>
+
+  <footer>
+    Developed by Lavkush Tyagi | <a href="#" target="_blank">Yoeki</a>
+    <div class="copyright">&copy; <a href="https://google.com/" target="_blank">Y S Pvt. Ltd.</a>. All rights reserved.</div>
+  </footer>
+
+  <script>
+    document.addEventListener('keydown', function(event) {
+      var locationDescription = '';
+
+      if (event.location === 0) {
+        locationDescription = 'Standard keys';
+      } else if (event.location === 1) {
+        locationDescription = 'Left-side keys';
+      } else if (event.location === 2) {
+        locationDescription = 'Right-side keys';
+      } else if (event.location === 3) {
+        locationDescription = 'Numpad keys';
+      } else if (event.location === 4) {
+        locationDescription = 'General keys';
+      }
+
+      var keyInfo = `
+        <strong>Key Pressed:</strong> ${event.key}<br>
+        <strong>Key Code:</strong> ${event.keyCode}<br>
+        <strong>Location:</strong> ${locationDescription}<br>
+        <strong>Event Code:</strong> ${event.code}<br>
+        <strong>Description:</strong> ${event.key === ' ' ? 'Space' : event.key}
+      `;
+
+      document.getElementById('keyInfo').innerHTML = keyInfo;
+    });
+  </script>
+</body>
+</html>
